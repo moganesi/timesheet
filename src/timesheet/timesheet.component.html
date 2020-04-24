@@ -1,0 +1,100 @@
+<div><label style="margin-right:10px">Total Monthly Hours: </label>{{recipientMonthlyMaxHours}}<label style="margin:10px">Previous Payment Period Last Week Hours: </label>{{remainerHoursFromLastWeek}}</div>
+<div style="margin:10px"><label style="margin-right:10px">Client Name:</label>{{recipientName}}<label style="margin-left:10px">Hours:</label><input #totalHours1  [(ngModel)]="totalHours" type="text"></div>
+
+    <table style="margin:10px">
+        <tr>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[0].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(0)" [(ngModel)]="dayNameHourFields[0].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[7].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(7)" [(ngModel)]="dayNameHourFields[7].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[14].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(14)" [(ngModel)]="dayNameHourFields[14].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[21].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(21)" [(ngModel)]="dayNameHourFields[21].hoursPerDay"></td>
+        </tr>
+        <tr>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[1].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(1)" [(ngModel)]="dayNameHourFields[1].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[8].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(8)" [(ngModel)]="dayNameHourFields[8].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[15].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(15)" [(ngModel)]="dayNameHourFields[15].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[22].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(22)" [(ngModel)]="dayNameHourFields[22].hoursPerDay"></td>
+        </tr>
+        <tr>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[2].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(2)" [(ngModel)]="dayNameHourFields[2].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[9].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(9)" [(ngModel)]="dayNameHourFields[9].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[16].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(16)" [(ngModel)]="dayNameHourFields[16].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[23].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(23)" [(ngModel)]="dayNameHourFields[23].hoursPerDay"></td>
+        </tr>
+        <tr>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[3].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(3)" [(ngModel)]="dayNameHourFields[3].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[10].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(10)" [(ngModel)]="dayNameHourFields[10].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[17].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(7)" [(ngModel)]="dayNameHourFields[17].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[24].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(24)" [(ngModel)]="dayNameHourFields[24].hoursPerDay"></td>
+        </tr>
+        <tr>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[4].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(4)" [(ngModel)]="dayNameHourFields[4].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[11].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(11)" [(ngModel)]="dayNameHourFields[11].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[18].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(18)" [(ngModel)]="dayNameHourFields[18].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[25].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(25)" [(ngModel)]="dayNameHourFields[25].hoursPerDay"></td>
+        </tr>
+        <tr>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[5].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(5)" [(ngModel)]="dayNameHourFields[5].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[12].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(12)" [(ngModel)]="dayNameHourFields[12].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[19].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(19)" [(ngModel)]="dayNameHourFields[19].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[26].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(26)" [(ngModel)]="dayNameHourFields[26].hoursPerDay"></td>
+        </tr>
+        <tr>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[6].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(6)" [(ngModel)]="dayNameHourFields[6].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[13].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(13)" [(ngModel)]="dayNameHourFields[13].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[20].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(20)" [(ngModel)]="dayNameHourFields[20].hoursPerDay"></td>
+            <td><input type="text" day [(ngModel)]="dayNameHourFields[27].dayName"></td>
+            <td><input type="text" data (keyup)="onKeyUp(27)" [(ngModel)]="dayNameHourFields[27].hoursPerDay"></td>
+        </tr>
+        <tr>
+            <td><input type="text" day value="Weekly Total"></td>
+            <td><input type="text" day total [(ngModel)]="totalWeek1"></td>
+            <td><input type="text" day value="Weekly Total"></td>
+            <td><input type="text" day total [(ngModel)]="totalWeek2"></td>
+            <td><input type="text" day value="Weekly Total"></td>
+            <td><input type="text" day total [(ngModel)]="totalWeek3"></td>
+            <td><input type="text" day value="Weekly Total"></td>
+            <td><input type="text" day total [(ngModel)]="totalWeek4"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>Total:<input type="text" total [(ngModel)]="totalHourAllWeeks"></td>
+
+        </tr>
+    </table>
+
+
+

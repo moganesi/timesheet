@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "timesheet-app-162a7": {
+      "hosting": {
+        "timesheet": [
+          "timesheet-app-162a7"
+        ]
+      }
+    }
+  }
+}

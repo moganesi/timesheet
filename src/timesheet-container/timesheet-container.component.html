@@ -1,0 +1,45 @@
+<mat-toolbar  color="primary"  class="fixed-header">
+  <mat-toolbar-row>
+    <mat-form-field>
+      <mat-label>Choose a start date</mat-label>
+      <input matInput #pickerStart1 [matDatepicker]="pickerStart">
+      <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+      <mat-datepicker #pickerStart></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Choose a end date</mat-label>
+      <input matInput #pickerEnd1 [matDatepicker]="pickerEnd">
+      <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+      <mat-datepicker #pickerEnd></mat-datepicker>
+    </mat-form-field>
+  <button  mat-button (click)="calc()"> Calculate Clients</button>
+  <button  mat-button [disabled]="!calculated" (click)="saveClients()">Save</button>
+  <button  mat-button (click)="resetClients()">Reset</button>
+  </mat-toolbar-row>
+  </mat-toolbar>
+
+<!-- <label>From:</label><owl-date-time type="calendar" dateFormat='MM/DD/YYYY' [(ngModel)]="dateFrom"></owl-date-time> <label>To:</label><owl-date-time type="calendar" dateFormat='MM/DD/YYYY' [(ngModel)]="dateTo"></owl-date-time> -->
+<!-- <button type="button" class="btn btn-my" (click)="calc()">Calculate Clients</button><button type="button" class="btn btn-my" [disabled]="!calculated" (click)="saveClients()">Save Clients</button><button type="button" class="btn btn-my" (click)="resetClients()">Reset Clients</button> -->
+
+<div ><app-timesheet #timesheet *ngFor="let rInfo of RecipientsInfo"
+   [recipientName]="rInfo.RecipientName"
+   [totalHours]="rInfo.PayPeriodTotalHours"
+   [recipientMonthlyMaxHours]="rInfo.TotalMonthlyHours"
+   [allowableHoursPerWeek]="rInfo.allowableHoursPerWeek"
+   [remainerHoursFromLastWeek]="rInfo.PrevPaymentPeriodLastWeekHours"
+   [DocId]="rInfo.DocId"
+   (week1Changed)="onWeek1Changed($event)"
+   (week2Changed)="onWeek2Changed($event)"
+   (week3Changed)="onWeek3Changed($event)"
+   (week4Changed)="onWeek4Changed($event)"
+   >
+  </app-timesheet></div>
+
+
+  <div style="margin-left:70px">
+    <div style="float:left;"><label>Total Week 1:</label> <input type="text" alltotal [(ngModel)]="weekTotal1" #totalWeek1><div [class.invisible]="totalWeek1.value <=  66" [class.invalidTotal]="totalWeek1.value >  66">can't work more than 66 hours per week.</div></div>
+    <div style="float:left;"><label style="margin-left:30px">Total Week 2:</label> <input type="text" alltotal [(ngModel)]="weekTotal2" #totalWeek21><div [class.invisible]="totalWeek21.value <=  66" [class.invalidTotal]="totalWeek21.value >  66">can't work more than 66 hours per week.</div></div>
+    <div style="float:left;"><label style="margin-left:30px">Total Week 3:</label> <input type="text" alltotal [(ngModel)]="weekTotal3" #totalWeek31><div [class.invisible]="totalWeek31.value <=  66" [class.invalidTotal]="totalWeek31.value >  66">can't work more than 66 hours per week.</div></div>
+    <div style="float:left;"><label style="margin-left:30px">Total Week 4:</label> <input type="text" alltotal [(ngModel)]="weekTotal4" #totalWeek41><div [class.invisible]="totalWeek41.value <=  66" [class.invalidTotal]="totalWeek41.value >  66">can't work more than 66 hours per week.</div></div>
+    <label>Total:</label> <input type="text" alltotal [(ngModel)]="totalHourAll">
+</div>
