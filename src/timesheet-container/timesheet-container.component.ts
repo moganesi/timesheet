@@ -8,7 +8,8 @@ import { getDay, getMonth, startOfToday, getYear, getDate, lastDayOfMonth } from
 import { Recipient } from 'src/app/recipient';
 import { Observable, Subscription } from 'rxjs';
 import {map} from 'rxjs/operators';
-
+import { AngularFireAuth } from '@angular/fire/auth';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-timesheet-container',
@@ -53,7 +54,12 @@ export class TimesheetContainerComponent implements OnInit, AfterViewInit {
          recipientsCollection: AngularFirestoreCollection<Recipient>;
          recipientObservable: Observable<Recipient[]>;
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(private afs: AngularFirestore, public afAuth: AngularFireAuth) {
+
+
+
+
+   }
 
   ngOnInit() {
     // this.recipientsCollection = this.afs.collection('recipients');
@@ -96,12 +102,13 @@ export class TimesheetContainerComponent implements OnInit, AfterViewInit {
             PerPeyPeriod1 = false;
         }
 
-        this.recipientsCollection = this.afs.collection('recipients');
-    this.recipientObservable = this.recipientsCollection.valueChanges();
 
 
+    this.afAuth.signInWithEmailAndPassword('moganesi@yahoo.com','9220897mo').then((a)=>{
 
-    this.sub = this.recipientObservable.subscribe((r) =>{ for (let index = 0; index < r.length; index++) {
+      this.recipientsCollection = this.afs.collection('recipients');
+      this.recipientObservable = this.recipientsCollection.valueChanges();
+      this.sub = this.recipientObservable.subscribe((r) =>{ for (let index = 0; index < r.length; index++) {
       let rmodel =  {} as RecipientModel;
           rmodel.RecipientName = r[index].RecipientName;
           rmodel.TotalMonthlyHours = r[index].TotalhoursPerMonth;
@@ -117,6 +124,23 @@ export class TimesheetContainerComponent implements OnInit, AfterViewInit {
           this.RecipientsInfo.push(rmodel);
           console.log(this.RecipientsInfo);
     } });
+    });
+    // this.sub = this.recipientObservable.subscribe((r) =>{ for (let index = 0; index < r.length; index++) {
+    //   let rmodel =  {} as RecipientModel;
+    //       rmodel.RecipientName = r[index].RecipientName;
+    //       rmodel.TotalMonthlyHours = r[index].TotalhoursPerMonth;
+    //       rmodel.allowableHoursPerWeek = r[index].AllowableHoursPerWeek;
+    //       rmodel.PrevPaymentPeriodLastWeekHours=r[index].RemainingHoursFromLastPayPeriod;
+    //       rmodel.DocId = r[index].DocId;
+    //       if(PerPeyPeriod1){
+    //         rmodel.PayPeriodTotalHours = r[index].HoursPerPeyPeriod1;
+    //       }else{
+    //         rmodel.PayPeriodTotalHours = r[index].HoursPerPeyPeriod2;
+    //       }
+
+    //       this.RecipientsInfo.push(rmodel);
+    //       console.log(this.RecipientsInfo);
+    // } });
 
 
 

@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 
 
+
 @Component({
   selector: 'app-timesheet',
   templateUrl: './timesheet.component.html',
@@ -66,7 +67,10 @@ setTotalWeek4(value:number) {
 
 }
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(private afs: AngularFirestore) {
+    //this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+
+   }
 
   ngOnInit() {
   }
