@@ -122,7 +122,7 @@ export class TimesheetContainerComponent implements OnInit, AfterViewInit {
           }
 
           this.RecipientsInfo.push(rmodel);
-          console.log(this.RecipientsInfo);
+          console.log(this.RecipientsInfo.length);
     } });
     });
     // this.sub = this.recipientObservable.subscribe((r) =>{ for (let index = 0; index < r.length; index++) {

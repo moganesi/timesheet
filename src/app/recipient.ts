@@ -1,4 +1,4 @@
-export interface Recipient
+export class Recipient
 {
   AllowableHoursPerWeek:number;
   HoursPerPeyPeriod1:number;

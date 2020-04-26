@@ -1,0 +1,81 @@
+<form [formGroup]="recipientForm" (ngSubmit)="onSubmit()">
+  <mat-form-field [color]="recipientName.valid">
+    <input
+      matInput
+      formControlName="recipientName"
+      placeholder="Recipient Name"
+    />
+    <mat-error *ngIf="recipientName.invalid && recipientName.dirty">
+      Recipient Name is Required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field [color]="totalhoursPerMonth.valid">
+    <input
+      matInput
+      formControlName="totalhoursPerMonth"
+      placeholder="Total Hours Per Month"
+    />
+    <mat-error *ngIf="totalhoursPerMonth.invalid && totalhoursPerMonth.dirty">
+      Total Hours Per Month is Required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field [color]="remainingHoursFromLastPayPeriod.valid">
+    <input
+      matInput
+      formControlName="remainingHoursFromLastPayPeriod"
+      placeholder="RemainingHoursFromLastPayPeriod"
+    />
+    <mat-error *ngIf="remainingHoursFromLastPayPeriod.invalid && remainingHoursFromLastPayPeriod.dirty">
+      remainingHoursFromLastPayPeriod is Required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field [color]="allowableHoursPerWeek.valid">
+    <input
+      matInput
+      formControlName="allowableHoursPerWeek"
+      placeholder="AllowableHoursPerWeek"
+    />
+    <mat-error *ngIf="allowableHoursPerWeek.invalid && allowableHoursPerWeek.dirty">
+      allowableHoursPerWeek is Required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field [color]="hoursPerPeyPeriod1.valid">
+    <input
+      matInput
+      formControlName="hoursPerPeyPeriod1"
+      placeholder="hoursPerPeyPeriod1"
+    />
+    <mat-error *ngIf="hoursPerPeyPeriod1.invalid && hoursPerPeyPeriod1.dirty">
+      hoursPerPeyPeriod1 is Required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field [color]="hoursPerPeyPeriod2.valid">
+    <input
+      matInput
+      formControlName="hoursPerPeyPeriod2"
+      placeholder="hoursPerPeyPeriod2"
+    />
+    <mat-error *ngIf="hoursPerPeyPeriod2.invalid && hoursPerPeyPeriod2.dirty">
+      hoursPerPeyPeriod2 is Required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field [color]="docId.valid">
+    <input
+      matInput
+      formControlName="docId"
+      placeholder="docId"
+    />
+    <mat-error *ngIf="docId.invalid && docId.dirty">
+      docId is Required
+    </mat-error>
+  </mat-form-field>
+  <button
+
+      mat-raised-button
+      color="accent"
+      type="submit"
+      [disabled]="recipientForm.invalid"
+    >
+      Submit
+    </button>
+</form>
