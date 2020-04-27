@@ -2,13 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection,AngularFirestoreDocument } from '@angular/fire/firestore';
 import{Recipient} from '../recipient';
 import { Observable, Subscription } from 'rxjs';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DataentryComponent } from '../dataentry/dataentry.component';
 
 @Component({
   selector: 'app-recipientlist',
@@ -33,7 +28,7 @@ export class RecipientlistComponent implements OnInit {
   // Recipients:Array<Recipient>=[]
 
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(private afs: AngularFirestore, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.recipientsCollection = this.afs.collection('recipients');
@@ -58,13 +53,38 @@ export class RecipientlistComponent implements OnInit {
   }
 
   onEdit(val:Recipient){
-     console.log(val);
+    const dialogRef = this.dialog.open(DataentryComponent, {
+      width: '500px',
+      data: val
+    });
+
+    dialogRef.afterClosed().subscribe((result:Recipient) => {
+      console.log('The dialog was closed');
+      const doc = this.afs.doc('recipients/'+result.DocId);
+      doc.set(result).then(() => console.log('successEdit') )
+       .catch(err => console.log(err) )
+    });
   }
 
   onDelete(val:Recipient){
+    const doc = this.afs.doc('recipients/'+val.DocId);
+    doc.delete().then(() => console.log('successDelete') )
+     .catch(err => console.log(err) )
+  ;
 
   }
   onAdd(){
+    const dialogRef = this.dialog.open(DataentryComponent, {
+      width: '500px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe((result:Recipient) => {
+      console.log('The dialog was closed');
+      const collection = this.afs.collection('recipients');
+      collection.add(result).then(() => console.log('successadd') )
+       .catch(err => console.log(err) )
+    });
 
   }
 

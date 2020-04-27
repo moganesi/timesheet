@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import{Recipient} from '../recipient';
 
 @Component({
   selector: 'app-dataentry',
@@ -11,43 +13,45 @@ export class DataentryComponent implements OnInit {
   // recipientNameCtrl: FormControl;
   // totalMonthlyHoursCtrl: FormControl;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<DataentryComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Recipient) { }
 
   ngOnInit() {
     this.recipientForm = this.fb.group({
-      recipientName: ['', [Validators.required]],
-      totalhoursPerMonth: [ '',[ Validators.required]],
-      remainingHoursFromLastPayPeriod: ['', [Validators.required]],
-      allowableHoursPerWeek:['', [Validators.required]],
-      hoursPerPeyPeriod1:['', [Validators.required]],
-      hoursPerPeyPeriod2:['', [Validators.required]],
-      docId:['', [Validators.required]]
+      RecipientName: [this.data.RecipientName, [Validators.required]],
+      TotalhoursPerMonth: [ this.data.TotalhoursPerMonth,[ Validators.required]],
+      RemainingHoursFromLastPayPeriod: [this.data.RemainingHoursFromLastPayPeriod, [Validators.required]],
+      AllowableHoursPerWeek:[this.data.AllowableHoursPerWeek, [Validators.required]],
+      HoursPerPeyPeriod1:[this.data.HoursPerPeyPeriod1, [Validators.required]],
+      HoursPerPeyPeriod2:[this.data.HoursPerPeyPeriod2, [Validators.required]],
+      DocId:[this.data.DocId, [Validators.required]]
     });
   }
   get recipientName() {
-    return this.recipientForm.get('recipientName');
+    return this.recipientForm.get('RecipientName');
   }
   get totalhoursPerMonth() {
-    return this.recipientForm.get('totalhoursPerMonth');
+    return this.recipientForm.get('TotalhoursPerMonth');
   }
   get remainingHoursFromLastPayPeriod() {
-    return this.recipientForm.get('remainingHoursFromLastPayPeriod');
+    return this.recipientForm.get('RemainingHoursFromLastPayPeriod');
   }
   get allowableHoursPerWeek() {
-    return this.recipientForm.get('allowableHoursPerWeek');
+    return this.recipientForm.get('AllowableHoursPerWeek');
   }
   get hoursPerPeyPeriod1() {
-    return this.recipientForm.get('hoursPerPeyPeriod1');
+    return this.recipientForm.get('HoursPerPeyPeriod1');
   }
   get hoursPerPeyPeriod2() {
-    return this.recipientForm.get('hoursPerPeyPeriod2');
+    return this.recipientForm.get('HoursPerPeyPeriod2');
   }
   get docId() {
-    return this.recipientForm.get('docId');
+    return this.recipientForm.get('DocId');
   }
 
   onSubmit(){
-    console.log(this.recipientForm.value);
+   // console.log(this.recipientForm.value);
+    this.dialogRef.close(this.recipientForm.value);
   }
 
 }
