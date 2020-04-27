@@ -89,39 +89,30 @@ setTotalWeek4(value:number) {
     let modulus = totalHoursFloor % cycleLenth;
 //put hours equally in days
     for (let index = fromWeekDay; index <=( cycleLenth+fromWeekDay-1); index++) {
-    if (totalHoursDecimal>0){
-      //put desimal and modulus hours on last day
-       if (index==cycleLenth+fromWeekDay-2){
-         this.dayNameHourFields[index].hoursPerDay=hourPerDay*2+modulus;
-       }else if(index==cycleLenth+fromWeekDay-1)
-       {
-        this.dayNameHourFields[index].hoursPerDay=totalHoursDecimal;//on a last day I put only Decimals
-       }
-
-       else{
-         this.dayNameHourFields[index].hoursPerDay=hourPerDay;
-       }
-      }else{
-        //put desimal and modulus hours on last day
-       if (index==cycleLenth+fromWeekDay-2){
-        this.dayNameHourFields[index].hoursPerDay=(hourPerDay+hourPerDay-1)+modulus;
-      }else if(index==cycleLenth+fromWeekDay-1)
-      {
-       this.dayNameHourFields[index].hoursPerDay=1;//on a last day I put only 1 hour
+      this.dayNameHourFields[index].hoursPerDay=hourPerDay
+      if (modulus>0){
+        this.dayNameHourFields[index].hoursPerDay=this.dayNameHourFields[index].hoursPerDay+1;
+        modulus = modulus-1;
+      }
+      if(index==cycleLenth+fromWeekDay-2){
+        this.dayNameHourFields[index].hoursPerDay=hourPerDay+hourPerDay-1;
+      }
+      if(index==cycleLenth+fromWeekDay-1){
+        this.dayNameHourFields[index].hoursPerDay=Number((1+Number(totalHoursDecimal.toFixed(4))).toFixed(4));
       }
 
-      else{
-        this.dayNameHourFields[index].hoursPerDay=hourPerDay;
-      }
-
-      }
+    //   }
       //generate weekdays numbers of week
      this.dayNameHourFields[index].dayName=this.dayNameHourFields[index].dayName
                                                                       +' '+fromMonthDay++;
 
     }
-//put remainder hours from last week to day before first day of pay period
-    this.dayNameHourFields[fromWeekDay-1].hoursPerDay=Math.ceil(this.remainerHoursFromLastWeek);
+    //put remainder hours from last week to day before first day of pay period
+    if(fromWeekDay>0){
+        this.dayNameHourFields[fromWeekDay-1].hoursPerDay=Math.ceil(this.remainerHoursFromLastWeek);
+    }else{
+      this.remainerHoursFromLastWeek=0;
+    }
 
     this.totalWeek1 = this.dayNameHourFields.filter((a, i) => i <= 6).reduce((a, b) => a + b.hoursPerDay, 0);
     let week1SurplusHour=this.totalWeek1-this.allowableHoursPerWeek;
@@ -130,8 +121,10 @@ setTotalWeek4(value:number) {
     if(week1SurplusHour>0) {
       this.dayNameHourFields[7].hoursPerDay+=week1SurplusHour;
       for (let index = fromWeekDay; index <= 6 && week1SurplusHour>0; week1SurplusHour--) {
-        this.dayNameHourFields[index].hoursPerDay = this.dayNameHourFields[index].hoursPerDay -1;
-        this.totalWeek1--
+        if(this.dayNameHourFields[index].hoursPerDay>0){
+         this.dayNameHourFields[index].hoursPerDay = this.dayNameHourFields[index].hoursPerDay -1;
+         this.totalWeek1--
+        }
         if (index==6&&week1SurplusHour>0){
           index = fromWeekDay;
         }else{
@@ -204,7 +197,9 @@ setTotalWeek4(value:number) {
   }
 
   onKeyUp(day:number){
+
     this.dayNameHourFields[day].hoursPerDay = Number(this.dayNameHourFields[day].hoursPerDay);
+    console.log(this.dayNameHourFields);
     let newTOtalWeek1=this.dayNameHourFields.filter((a, i) => i <= 6).reduce((a, b) => a + b.hoursPerDay, 0);
     this.setTotalWeek1(newTOtalWeek1);
 

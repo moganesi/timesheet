@@ -31,6 +31,8 @@ import { DataentryComponent } from './dataentry/dataentry.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { RecipientlistComponent } from './recipientlist/recipientlist.component';
+import { EmailLoginComponent } from '../email-login/email-login.component';
+import { LoginPageComponent } from '../login-page/login-page.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { RecipientlistComponent } from './recipientlist/recipientlist.component'
       TimesheetComponent,
       TimesheetContainerComponent,
       DataentryComponent,
-      RecipientlistComponent
+      RecipientlistComponent,
+      EmailLoginComponent,
+      LoginPageComponent
    ],
    imports: [
       BrowserModule,

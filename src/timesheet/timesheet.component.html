@@ -1,7 +1,7 @@
 <div><label style="margin-right:10px">Total Monthly Hours: </label>{{recipientMonthlyMaxHours}}<label style="margin:10px">Previous Payment Period Last Week Hours: </label>{{remainerHoursFromLastWeek}}</div>
 <div style="margin:10px"><label style="margin-right:10px">Client Name:</label>{{recipientName}}<label style="margin-left:10px">Hours:</label><input #totalHours1  [(ngModel)]="totalHours" type="text"></div>
 
-    <table style="margin:10px">
+    <table style="margin:10px" class="mat-elevation-z8">
         <tr>
             <td><input type="text" day [(ngModel)]="dayNameHourFields[0].dayName"></td>
             <td><input type="text" data (keyup)="onKeyUp(0)" [(ngModel)]="dayNameHourFields[0].hoursPerDay"></td>
@@ -38,7 +38,7 @@
             <td><input type="text" day [(ngModel)]="dayNameHourFields[10].dayName"></td>
             <td><input type="text" data (keyup)="onKeyUp(10)" [(ngModel)]="dayNameHourFields[10].hoursPerDay"></td>
             <td><input type="text" day [(ngModel)]="dayNameHourFields[17].dayName"></td>
-            <td><input type="text" data (keyup)="onKeyUp(7)" [(ngModel)]="dayNameHourFields[17].hoursPerDay"></td>
+            <td><input type="text" data (keyup)="onKeyUp(17)" [(ngModel)]="dayNameHourFields[17].hoursPerDay"></td>
             <td><input type="text" day [(ngModel)]="dayNameHourFields[24].dayName"></td>
             <td><input type="text" data (keyup)="onKeyUp(24)" [(ngModel)]="dayNameHourFields[24].hoursPerDay"></td>
         </tr>

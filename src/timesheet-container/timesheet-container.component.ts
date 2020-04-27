@@ -104,7 +104,7 @@ export class TimesheetContainerComponent implements OnInit, AfterViewInit {
 
 
 
-    this.afAuth.signInWithEmailAndPassword('moganesi@yahoo.com','9220897mo').then((a)=>{
+  //  this.afAuth.signInWithEmailAndPassword('moganesi@yahoo.com','9220897mo').then((a)=>{
 
       this.recipientsCollection = this.afs.collection('recipients');
       this.recipientObservable = this.recipientsCollection.valueChanges();
@@ -124,7 +124,7 @@ export class TimesheetContainerComponent implements OnInit, AfterViewInit {
           this.RecipientsInfo.push(rmodel);
           console.log(this.RecipientsInfo.length);
     } });
-    });
+   // });
     // this.sub = this.recipientObservable.subscribe((r) =>{ for (let index = 0; index < r.length; index++) {
     //   let rmodel =  {} as RecipientModel;
     //       rmodel.RecipientName = r[index].RecipientName;
