@@ -56,13 +56,13 @@ export class TimesheetComponent implements OnInit {
   }
   setTotalWeek3(value:number) {
     let hourDiff=value - this.totalWeek3;
-    this.week1Changed.emit({hourDiff});
+    this.week3Changed.emit({hourDiff});
     this.totalWeek3 = value
 
 }
 setTotalWeek4(value:number) {
   let hourDiff=value - this.totalWeek4;
-  this.week1Changed.emit({hourDiff});
+  this.week4Changed.emit({hourDiff});
   this.totalWeek4 = value
 
 }
