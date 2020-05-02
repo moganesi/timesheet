@@ -201,6 +201,7 @@ setTotalWeek4(value:number) {
     this.dayNameHourFields[day].hoursPerDay = Number(this.dayNameHourFields[day].hoursPerDay);
     console.log(this.dayNameHourFields);
     let newTOtalWeek1=this.dayNameHourFields.filter((a, i) => i <= 6).reduce((a, b) => a + b.hoursPerDay, 0);
+    console.log(newTOtalWeek1);
     this.setTotalWeek1(newTOtalWeek1);
 
     let newTOtalWeek2 = this.dayNameHourFields.filter((a, i) => 6 < i && i <= 13).reduce((a, b) => a + b.hoursPerDay, 0);
@@ -209,7 +210,7 @@ setTotalWeek4(value:number) {
     this.setTotalWeek3(newTOtalWeek3);
     let newTOtalWeek4 = this.dayNameHourFields.filter((a, i) => 20 < i && i <= 27).reduce((a, b) => a + b.hoursPerDay, 0);
     this.setTotalWeek4(newTOtalWeek4);
-    this.totalHourAllWeeks=this.totalWeek1+this.totalWeek2+this.totalWeek3+this.totalWeek4-this.remainerHoursFromLastWeek;
+    this.totalHourAllWeeks=this.totalWeek1+this.totalWeek2+this.totalWeek3+this.totalWeek4-Math.ceil(this.remainerHoursFromLastWeek);
 
   };
 
