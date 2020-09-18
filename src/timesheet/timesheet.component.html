@@ -82,9 +82,11 @@
             <div [class.invisible]="totWeek2.value <=  allowableHoursPerWeek" [class.invalidTotal]="totWeek2.value >  allowableHoursPerWeek">can't work more than {{allowableHoursPerWeek}} hours per week.</div>
             </td>
             <td><input type="text" day value="Weekly Total"></td>
-            <td><input type="text" day #totWeek3 total [(ngModel)]="totalWeek3">
-              <div [class.invisible]="totWeek3.value <=  allowableHoursPerWeek" [class.invalidTotal]="totWeek3.value >  allowableHoursPerWeek">can't work more than {{allowableHoursPerWeek}} hours per week.</div>
+            <td><input type="text" day #totWeek3 total [(ngModel)]="totalWeek3" >
+
+              <div [class.invisible]="1*totWeek3.value <=  1*allowableHoursPerWeek" [class.invalidTotal]="1*totWeek3.value >  1*allowableHoursPerWeek">can't work more than {{allowableHoursPerWeek}} hours per week.</div>
             </td>
+
             <td><input type="text" day value="Weekly Total"></td>
             <td><input type="text" day total [(ngModel)]="totalWeek4"></td>
         </tr>
